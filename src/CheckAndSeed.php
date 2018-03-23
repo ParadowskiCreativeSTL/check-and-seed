@@ -4,10 +4,17 @@ namespace Paradowski\CheckAndSeed;
 
 use Carbon\Carbon;
 // Note that this seeder is specifically made to work with laravel's Seeder class,
-// so we're assuming you're adding this to a laravel project.
+// so we're assuming you're adding this to a laravel project, i.e. we have access
+// to these tools via the service container.
+// I'm not sure if there's a better way of doing this or not. It doesn't seem like we
+// should require the entire laravel framework as a dependency, but we should have some
+// way of maintaining and testing our own package externally. Maybe handle this via dependency
+// injection?
+// Read up on how to develop a package for laravel that requires some of laravel internals;
+use DB;
 use Illuminate\Database\Seeder;
 
-abstract class StructuralSeederBase extends Seeder
+abstract class CheckAndSeed extends Seeder
 {
 
     /**
